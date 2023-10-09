@@ -16,20 +16,17 @@ export default function Home() {
   const [drawing, setDrawing] = useState(false);
   const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
 
-  // 初期状態を0に設定
   const [windowSize, setWindowSize] = useState({
     width: 0,
     height: 0,
   });
 
   useEffect(() => {
-    // 初回レンダリング時にwindowのサイズを設定
     setWindowSize({
       width: window.innerWidth,
       height: window.innerHeight,
     });
 
-    // resizeイベントのハンドラ
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
@@ -37,14 +34,12 @@ export default function Home() {
       });
     };
 
-    // resizeイベントリスナーを追加
     window.addEventListener("resize", handleResize);
 
     return () => {
-      // cleanup
       window.removeEventListener("resize", handleResize);
     };
-  }, []); // 空の依存配列で初回レンダリング時のみ実行
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -94,7 +89,7 @@ export default function Home() {
 
       context.lineTo(x, y);
       context.stroke();
-      context.beginPath(); // 新しいパスを開始
+      context.beginPath();
       context.moveTo(x, y);
 
       socket.emit("draw", {
@@ -141,7 +136,6 @@ export default function Home() {
     });
   }, []);
 
-  // canvasのwidthとheightにstateを使用
   return (
     <canvas
       ref={canvasRef}
