@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { io } from "socket.io-client";
+import * as Y from "yjs";
+import { WebsocketProvider } from "y-websocket";
 
-const socket = io("http://localhost:3001");
+const ydoc = new Y.Doc();
+const yMap = ydoc.getMap("drawMap");
+
+const provider = new WebsocketProvider(
+  "ws://localhost:1234",
+  "draw-room",
+  ydoc
+);
 
 type DrawAction = "start" | "draw" | "end";
 
@@ -57,7 +65,7 @@ export default function Home() {
       context.moveTo(x, y);
       setLastPosition({ x, y });
 
-      socket.emit("draw", {
+      yMap.set("draw", {
         action: "start",
         from: { x, y },
         to: { x, y },
@@ -70,7 +78,7 @@ export default function Home() {
       setDrawing(false);
       context.beginPath();
 
-      socket.emit("draw", {
+      yMap.set("draw", {
         action: "end",
         from: { x: lastPosition.x, y: lastPosition.y },
         to: { x: lastPosition.x, y: lastPosition.y },
@@ -92,7 +100,7 @@ export default function Home() {
       context.beginPath();
       context.moveTo(x, y);
 
-      socket.emit("draw", {
+      yMap.set("draw", {
         action: "draw",
         from: { x: lastPosition.x, y: lastPosition.y },
         to: { x, y },
@@ -119,7 +127,9 @@ export default function Home() {
     const context = canvas.getContext("2d");
     if (!context) return;
 
-    socket.on("draw", (data: DrawData) => {
+    yMap.observe((event) => {
+      const data = event.target.get("draw") as DrawData;
+
       context.lineWidth = 5;
       context.lineCap = "round";
       context.strokeStyle = "black";
