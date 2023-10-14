@@ -1,40 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 共同編集エディタ - Yjs + Blocknote
 
-## Getting Started
+このリポジトリは、Next.js、TypeScript、Yjs、およびBlocknoteを使用して作成された共同編集エディタのサンプルプロジェクトです。このプロジェクトは、複数のユーザーがリアルタイムでドキュメントを共同編集するためのプラットフォームを提供します。
 
-First, run the development server:
+## インストール
+
+プロジェクトをインストールするには、npm or yarn or bunを使用します。
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# npmを使用する場合
+npm install
+
+# yarnを使用する場合
+yarn install
+
+# bunを使用する場合
+
+bun install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Webソケットの起動
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+このプロジェクトでは、YjsのためのWebソケットを起動する必要があります。以下のコマンドを使用して起動できます。
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+# npxを使用する場合
+npx y-websocket start
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# もしくは、bunを使用する場合
+bunx y-websocket start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 開発開始
 
-## Learn More
+プロジェクトの開発を始めるには、以下のコマンドを使用します。
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# npmを使用して開発サーバーを起動する場合
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# yarnを使用して開発サーバーを起動する場合
+yarn dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# bunを使用して開発サーバーを起動する場合
+bun run dev
+```
 
-## Deploy on Vercel
+これで、プロジェクトが正常にセットアップされ、開発が始まります。共同編集エディタの詳細な情報やカスタマイズ方法については、プロジェクト内のドキュメンテーションを参照してください。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ドキュメンテーション
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+このリポジトリは以下のドキュメントを参考に作成されました。
+
+- [BlockNote](https://www.blocknotejs.org/)
+- [yjs](https://docs.yjs.dev/)
+
+## ライセンス
+
+このプロジェクトはMITライセンスの下で提供されています。詳細については、[LICENSE](LICENSE)ファイルを参照してください。
+
+## 貢献
+
+このプロジェクトへの貢献は歓迎します。バグの報告や新機能の提案については、GitHubのIssueトラッカーをご利用ください。また、プルリクエストも歓迎いたします。
+
