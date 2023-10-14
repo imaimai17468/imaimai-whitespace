@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@blocknote/core": "^0.9.5",
+    "@blocknote/react": "^0.9.5",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "socket.io": "^4.7.2",
-    "socket.io-client": "^4.7.2",
-    "y-websocket": "^1.5.0",
+    "y-webrtc": "^10.2.5",
+    "y-websocket": "latest",
     "yjs": "^13.6.8"
   },
   "devDependencies": {
